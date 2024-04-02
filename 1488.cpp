@@ -24,6 +24,7 @@ int main() {
 		firstparam = rand() % 2000;
 		secondparam = rand() % 2000;
 		//cout << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ";
+		//out << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ":
 		count2 = count;
 		for (int i = 0; i < step - 1; i++)
 		{
@@ -31,6 +32,7 @@ int main() {
 		}
 
 		result = secondparam + firstparam + count;
+		//cout << result << endl;
 		//cout << result << endl;
 		if (result == (1488)) {
 
