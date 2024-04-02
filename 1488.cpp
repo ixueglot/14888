@@ -10,36 +10,54 @@ int main() {
 	int result;
 	int firstparam;
 	int secondparam;
+	int msecondparam;
+	int smartparam;
 	int count;
 	int step;
-	int count1;
-	int count2;
-	out.open("1488.txt");
-
-	while (true)
+	int CountClon;
+	int printcount;
+	int i = 0;
+	int answer;
+	bool start = true;
+	int col;
+	out.open("col.txt");
+	cout << "Сколько повторений вам надо?" << endl << ">>>";
+	cin >> col;
+	cout << "Какой ответ вам нужен вам нужен?" << endl << ">>>";
+	if(col == 9931993){
+		start = false;
+	}
+	
+	cin >> answer;
+	while (start)
 	{
 		step = rand() % 9 + 1;
 		count = rand() % 9 + 1;
-		count1 = count;
-		firstparam = rand() % 2000;
-		secondparam = rand() % 2000;
+		CountClon = count;
+		firstparam = rand() % 20000 + (-2000) ;
+		secondparam = rand() % 20000 + (-2000); 
+		msecondparam = rand() % 20000+ (-2000);
+		smartparam = rand() % 20 + (-20);
 		//cout << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ";
 		//out << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ":
-		count2 = count;
+		printcount = count;
 		for (int i = 0; i < step - 1; i++)
 		{
-			count *= count1;
+			count *= CountClon;
 		}
 
-		result = secondparam + firstparam + count;
+		result = msecondparam - smartparam * count + secondparam + firstparam ;
 		//cout << result << endl;
 		//cout << result << endl;
-		if (result == (1488)) {
+		if (result == (answer) && start) {
 
-			cout << count2 << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
+			cout << msecondparam  << " - " << smartparam << " * " << printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
 
-
-			out << count2 << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
+			out << msecondparam  << " - "<< smartparam << " * "<< printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
+			i++;
+			if(i == col){
+				start = false;
+			}
 		}
 	}
 }
