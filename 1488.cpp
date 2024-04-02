@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <iomanip>
 using namespace std;
@@ -9,9 +9,11 @@ int main() {
 	std::ofstream out;
 	int result;
 	int firstparam;
+	int ffirstparam;
 	int secondparam;
 	int msecondparam;
 	int smartparam;
+	int ssmartparam;
 	int count;
 	int step;
 	int CountClon;
@@ -24,20 +26,22 @@ int main() {
 	cout << "Сколько повторений вам надо?" << endl << ">>>";
 	cin >> col;
 	cout << "Какой ответ вам нужен вам нужен?" << endl << ">>>";
-	if(col == 9931993){
+	if (col == 9931993) {
 		start = false;
 	}
-	
+
 	cin >> answer;
 	while (start)
 	{
 		step = rand() % 9 + 1;
 		count = rand() % 9 + 1;
 		CountClon = count;
-		firstparam = rand() % 20000 + (-2000) ;
-		secondparam = rand() % 20000 + (-2000); 
-		msecondparam = rand() % 20000+ (-2000);
-		smartparam = rand() % 20 + (-20);
+		ffirstparam = rand() % 200000 + (-2000);
+		firstparam = rand() % 200000 + (-2000);
+		secondparam = rand() % 200000 + (-2000);
+		msecondparam = rand() % 200000 + (-2000);
+		smartparam = rand() % 200 + (-20);
+		ssmartparam = rand() % 200 + (-20);
 		//cout << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ";
 		//out << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ":
 		printcount = count;
@@ -46,22 +50,19 @@ int main() {
 			count *= CountClon;
 		}
 
-		result = msecondparam - smartparam * count + secondparam + firstparam ;
+		result = ssmartparam * msecondparam - smartparam * count + secondparam + firstparam + ffirstparam;
 		//cout << result << endl;
 		//cout << result << endl;
 		if (result == (answer) && start) {
 
-			cout << msecondparam  << " - " << smartparam << " * " << printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
+			cout << ssmartparam << " * " << msecondparam << " - " << smartparam << " * " << printcount << "^" << step << " + " << secondparam << " + " << firstparam << " + " << ffirstparam << " = " << result << endl;
 
-			out << msecondparam  << " - "<< smartparam << " * "<< printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
+			out << msecondparam << " - " << smartparam << " * " << printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
 			i++;
-			if(i == col){
+			if (i == col) {
+				out.close();
 				start = false;
 			}
 		}
 	}
 }
-
-
-
-
