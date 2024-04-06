@@ -8,64 +8,49 @@ int main() {
 	srand(time(NULL));
 	std::ofstream out;
 	//создаю переменные
-	int result;
-	int firstparam;
-	int ffirstparam;
-	int secondparam;
-	int msecondparam;
-	int smartparam;
-	int ssmartparam;
-	int count;
-	int step;
-	int CountClon;
-	int printcount;
+	string resultST;
+	int long result;
+	double long printresult;
+	long int firstparam, ffirstparam, secondparam, msecondparam, smartparam, 
+		ssmartparam, count, step, CountClon;
 	int i = 0;
-	int answer;
+	double long answer;
 	bool start = true;
 	int col;
+	int e;
+	double long eClon;
 	out.open("col.txt");
-    //спрашиваю у пользователя сколько повторений нужно и какой будет ответ
+	//спрашиваю у пользователя сколько повторений нужно и какой будет ответ
 	cout << "Сколько повторений вам надо?" << endl << ">>>";
 	cin >> col;
 	cout << "Какой ответ вам нужен вам нужен?" << endl << ">>>";
-	//____________________
-	if (col == 9931993) {
-		start = false;
-	}
-
+	out << col << " Повторений" << endl;
 	cin >> answer;
 	//создаю цикл
 	while (start)
 	{
+		cout << setprecision(10);
 		//создаю рандомные числа
-		step = rand() % 40 + 1;
-		count = rand() % 40 + 1;
-		CountClon = count;
-		ffirstparam = rand() % 200000 + (-2000);
-		firstparam = rand() % 200000 + (-2000);
-		secondparam = rand() % 200000 + (-2000);
-		msecondparam = rand() % 200000 + (-2000);
-		smartparam = rand() % 200 + (-20);
-		ssmartparam = rand() % 200 + (-20);
-		//если хотите смотреть процесс подбора:
-		//cout << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ";
-		//out << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ":
-		printcount = count;
-		for (int i = 0; i < step - 1; i++)
-		{
-			count *= CountClon;
-		}
+		step = rand() % 10 + 1;
+		count = rand() % 10 + 1;
+		e = rand() % 100 + 1;
+		ffirstparam = rand() % 200000 + (-2000.00);
+		firstparam = rand() % 200000 + (-2000.00);
+		secondparam = rand() % 200000 + (-2000.00);
+		msecondparam = rand() % 200000 + (-2000.00);
+		smartparam = rand() % 200 + (-20.00);
+		ssmartparam = rand() % 200 + (-20.00);
+		CountClon = pow(count, step);
+		eClon = exp(e);
 		//считаю ответ
-		result = ssmartparam * msecondparam - smartparam * count + secondparam + firstparam + ffirstparam;
-		//если хотите смотреть процесс подбора:
-		//cout << result << endl;
-		//cout << result << endl;
+		result = eClon + ssmartparam * msecondparam - smartparam * CountClon + secondparam + firstparam + ffirstparam;
 		//Если ответ будет равен тому что указал пользователь
-		if (result == (answer) && start) {
+		if (result == (answer) && start) {		
+			printresult = eClon + ssmartparam * msecondparam - smartparam * CountClon + secondparam + firstparam + ffirstparam;
 			//вывожу в  терминал
-			cout << ssmartparam << " * " << msecondparam << " - " << smartparam << " * " << printcount << "^" << step << " + " << secondparam << " + " << firstparam << " + " << ffirstparam << " = " << result << endl;
+			cout << "e" << e << " + " << ssmartparam << " * " << msecondparam << " - " << smartparam << " * " << count << "^" << step << " + " << secondparam << " + " << firstparam << " + " << ffirstparam << " = " << printresult << endl;
 			//сохраняю в файл
-			out << msecondparam << " - " << smartparam << " * " << printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
+			out << "e" << e << " + " << ssmartparam << " * " << msecondparam << " - " << smartparam << " * " << count << "^" << step << " + " << secondparam << " + " << firstparam << " + " << ffirstparam << " = " << printresult << endl;
 			i++;
 			if (i == col) {
 				//закрываю файл
@@ -73,5 +58,9 @@ int main() {
 				start = false;
 			}
 		}
+		else {
+
+		}
 	}
 }
+
