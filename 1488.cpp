@@ -8,64 +8,77 @@ int main() {
 	srand(time(NULL));
 	std::ofstream out;
 	//создаю переменные
-	string resultST;
-	string input;
-	int long result;
+	int result;
 	double long printresult;
-	double long firstparam[10], secondparam[10], smartparam[10],
-		count, step, CountClon, answer;
-	int col, e, i{ 0 };
-	double long eClon;
+	int firstparam;
+	int ffirstparam;
+	int secondparam;
+	int msecondparam;
+	int smartparam;
+	int ssmartparam;
+	int count;
+	int step;
+	int CountClon;
+	int printcount;
+	int i = 0;
+	int answer;
+	bool start = true;
+	int col;
 	out.open("col.txt");
 	//спрашиваю у пользователя сколько повторений нужно и какой будет ответ
-	cout << "Start запустит код, set зайдет в настройки" << endl << ">>>";
-	cin >> input;
-	if (input == "set") {
-
-	}
 	cout << "Сколько повторений вам надо?" << endl << ">>>";
 	cin >> col;
 	cout << "Какой ответ вам нужен вам нужен?" << endl << ">>>";
-	out << col << " Повторений" << endl;
+	//____________________
+	if (col == 9931993) {
+		start = false;
+	}
+
 	cin >> answer;
 	//создаю цикл
-	while (!(i == col))
+	while (start)
 	{
-		cout << setprecision(10);
 		//создаю рандомные числа
-		step = (rand() % 10 * 1);
-		count = (rand() % 10 * 1);
-		e = rand() % 10 + 1;
-		firstparam[0] = (double)(rand()) / 200000 * (200000 - -20000) + -20000;
-		firstparam[1] = (double)(rand()) / 200000 * (200000 - -20000) + -20000;
-		secondparam[0] = (double)(rand()) / 200000 * (200000 - -20000) + -20000;
-		secondparam[1] = (double)(rand()) / 200000 * (200000 - -20000) + -20000;
-		smartparam[0] = (double)(rand()) / 200000 * (200 - -200) + -200;
-		smartparam[1] = (double)(rand()) / 200000 * (200 - -200) + -200;
-		CountClon = pow(count, step);
-		eClon = exp(e);
+		step = rand() % 40 + 1;
+		count = rand() % 40 + 1;
+		CountClon = count;
+		ffirstparam = rand() % 200000 + (-2000);
+		firstparam = rand() % 200000 + (-2000);
+		secondparam = rand() % 200000 + (-2000);
+		msecondparam = rand() % 200000 + (-2000);
+		smartparam = rand() % 200 + (-20);
+		ssmartparam = rand() % 200 + (-20);
+		//если хотите смотреть процесс подбора:
+		//cout << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ";
+		//out << count << "^" << step << " + " << firstparam << " + " << secondparam << " = ":
+		printcount = count;
+		for (int i = 0; i < step - 1; i++)
+		{
+			count *= CountClon;
+		}
 		//считаю ответ
-		result = eClon + smartparam[0] * secondparam[0] - smartparam[1] * CountClon + secondparam[1] + firstparam[0] + firstparam[1];
-		//cout << "e" << e << " + " << ssmartparam << " * " << msecondparam << " - " << smartparam << " * " << count << "^" << step << " + " << secondparam << " + " << firstparam << " + " << ffirstparam << " = " << result << endl;
+		result = ssmartparam * msecondparam - smartparam * count + secondparam + firstparam + ffirstparam;
+		printresult = ssmartparam * msecondparam - smartparam * count + secondparam + firstparam + ffirstparam;
+		//если хотите смотреть процесс подбора:
+		//cout << result << endl;
+		//cout << result << endl;
 		//Если ответ будет равен тому что указал пользователь
-		if (result == (answer)) {
-			printresult = eClon + smartparam[0] * secondparam[0] - smartparam[1] * CountClon + secondparam[1] + firstparam[0] + firstparam[1];
+		if (result == (answer) && start) {
 			//вывожу в  терминал
-			cout << "e" << e << " + " << smartparam[0] << " * " << secondparam[0] << " - " << smartparam[1] << " * " <<
-				count << "^" << step << " + " << secondparam[1] << " + " << firstparam[0] << " + " << firstparam[1] << " = " <<
-				printresult << endl;
+			cout << ssmartparam << " * " << msecondparam << " - " << smartparam << " * " << printcount << "^" << step << " + " << secondparam << " + " << firstparam << " + " << ffirstparam << " = " << result << endl;
 			//сохраняю в файл
-			out << "e" << e << " + " << smartparam[0] << " * " << secondparam[0] << " - " << smartparam[1] << " * " <<
-				count << "^" << step << " + " << secondparam[1] << " + " << firstparam[0] << " + " << firstparam[1] << " = " <<
-				printresult << endl;
+			out << msecondparam << " - " << smartparam << " * " << printcount << "^" << step << " + " << firstparam << " + " << secondparam << " = " << result << endl;
 			i++;
 			if (i == col) {
 				//закрываю файл
 				out.close();
+				start = false;
 			}
-		}
-		else {
 		}
 	}
 }
+
+
+
+
 
